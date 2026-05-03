@@ -1,0 +1,254 @@
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { useLang } from "../context/LangContext";
+
+const content = {
+  EN: {
+    label: "Get In Touch",
+    title: "Contacts",
+    address_label: "Address",
+    address: "Davtashen district, 2nd lane, building 34, apt. 28, Yerevan, Armenia",
+    phone_label: "Phone",
+    phone: "+374 91 726217",
+    email_label: "Email",
+    email: "Combogroupimport@gmail.com",
+    form_title: "Send a Message",
+    name: "Your Name",
+    company: "Company",
+    phone_field: "Phone",
+    email_field: "Email",
+    message: "Message",
+    send: "Send Message",
+    map_title: "Our Location",
+    legal_title: "Legal Information",
+    legal: {
+      company: "«Combo Group» LLC",
+      reg: "Registration number: 271.110.1480205",
+      tax: "Tax number: 08307238",
+      address: "Address: Davtashen district, 2nd lane, building 34, apt. 28, Yerevan, Armenia",
+      director: "Director: Hovhannes Hovhannisyan Yuriki",
+      bank: "Bank: «ACBA BANK» JSC",
+      branch: "Branch: «Avan»",
+      account: "Account: 220663331530000 AMD",
+    },
+  },
+  RU: {
+    label: "Свяжитесь с нами",
+    title: "Контакты",
+    address_label: "Адрес",
+    address: "р-н Давташен, 2-й переулок, дом 34, кв. 28, Ереван, Армения",
+    phone_label: "Телефон",
+    phone: "+374 91 726217",
+    email_label: "Email",
+    email: "Combogroupimport@gmail.com",
+    form_title: "Отправить сообщение",
+    name: "Ваше имя",
+    company: "Компания",
+    phone_field: "Телефон",
+    email_field: "Email",
+    message: "Сообщение",
+    send: "Отправить",
+    map_title: "Наше местоположение",
+    legal_title: "Реквизиты",
+    legal: {
+      company: "ООО «Комбо Груп»",
+      reg: "Регистрационный номер: 271.110.1480205",
+      tax: "Налоговый номер: 08307238",
+      address: "Адрес: р-н Давташен, 2-й переулок, дом 34, кв. 28, Ереван, Армения",
+      director: "Директор: Hovhannes Hovhannisyan Yuriki",
+      bank: "Банк: ЗАО «АКБА БАНК»",
+      branch: "Филиал: «Аван»",
+      account: "Счёт: 220663331530000 AMD",
+    },
+  },
+  AM: {
+    label: "Կապ հաստատեք",
+    title: "Կոնտակտներ",
+    address_label: "Հասցե",
+    address: "Դավթաշեն, 2-րդ նրբ., շ. 34, բն. 28, Երևան, Հայաստան",
+    phone_label: "Հեռախոս",
+    phone: "+374 91 726217",
+    email_label: "Էլ. փոստ",
+    email: "Combogroupimport@gmail.com",
+    form_title: "Ուղարկել հաղորդագրություն",
+    name: "Ձեր անունը",
+    company: "Ընկերություն",
+    phone_field: "Հեռախոս",
+    email_field: "Էլ. փոստ",
+    message: "Հաղորդագրություն",
+    send: "Ուղարկել",
+    map_title: "Մեր գտնվելու վայրը",
+    legal_title: "Իրավաբանական տվյալներ",
+    legal: {
+      company: "«Կոմբո Գրուփ» ՍՊԸ",
+      reg: "Գրանցման համար: 271.110.1480205",
+      tax: "Հարկ վճարողի համար (ՀՎՀՀ): 08307238",
+      address: "Հասցե: Դավթաշեն, 2-րդ նրբ., շ. 34, բն. 28, Երևան, Հայաստան",
+      director: "Գործադիր մարմնի դեկավար: Հովhաннес Հovhаннисян Юрики",
+      bank: "Բանկ: «ԱԿԲԱ ԲԱՆԿ» ՓԲԸ",
+      branch: "«Ավան» մասնաճյուղ",
+      account: "220663331530000 AMD",
+    },
+  },
+};
+
+export default function ContactsPage() {
+  const { lang } = useLang();
+  const t = content[lang];
+  const [legalOpen, setLegalOpen] = useState(false);
+
+  return (
+    <div className="pt-28 pb-24 bg-white min-h-screen">
+      <div className="max-w-7xl mx-auto px-6">
+
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
+        >
+          <p className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest mb-3">{t.label}</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-[#0B1F33] mb-4">{t.title}</h1>
+          <div className="w-16 h-1 bg-[#C9A84C] rounded" />
+        </motion.div>
+
+        {/* Contact Info + Form */}
+        <div className="grid md:grid-cols-2 gap-12 mb-16">
+
+          {/* Contact Info */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <div className="bg-[#0B1F33] rounded-2xl p-8 text-white h-fit">
+              <div className="space-y-8">
+                {[
+                  { icon: "📍", label: t.address_label, value: t.address },
+                  { icon: "📞", label: t.phone_label, value: t.phone, href: `tel:${t.phone}` },
+                  { icon: "📧", label: t.email_label, value: t.email, href: `mailto:${t.email}` },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-4">
+                    <span className="text-2xl">{item.icon}</span>
+                    <div>
+                      <p className="text-[#C9A84C] text-xs font-semibold uppercase tracking-widest mb-1">{item.label}</p>
+                      {item.href ? (
+                        <a href={item.href} className="text-white font-medium hover:text-[#C9A84C] transition-colors">
+                          {item.value}
+                        </a>
+                      ) : (
+                        <p className="text-white font-medium">{item.value}</p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <h2 className="text-2xl font-bold text-[#0B1F33] mb-6">{t.form_title}</h2>
+            <div className="space-y-4">
+              <input
+                type="text"
+                placeholder={t.name}
+                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#C9A84C] transition-colors"
+              />
+              <input
+                type="text"
+                placeholder={t.company}
+                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#C9A84C] transition-colors"
+              />
+              <input
+                type="tel"
+                placeholder={t.phone_field}
+                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#C9A84C] transition-colors"
+              />
+              <input
+                type="email"
+                placeholder={t.email_field}
+                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#C9A84C] transition-colors"
+              />
+              <textarea
+                placeholder={t.message}
+                rows={4}
+                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#C9A84C] transition-colors resize-none"
+              />
+              <button className="w-full bg-[#C9A84C] text-[#0B1F33] font-bold py-4 rounded-xl hover:brightness-110 transition-all">
+                {t.send}
+              </button>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Google Map */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mb-16"
+        >
+          <h2 className="text-2xl font-bold text-[#0B1F33] mb-6">{t.map_title}</h2>
+          <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-md">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23168.781528543965!2d44.44664557431642!3d40.212322500000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406abd006e0ffdcb%3A0xf1f33b9e86f76b22!2sBuilding%20Davtashen!5e1!3m2!1sru!2sam!4v1777835179701!5m2!1sru!2sam"
+              width="100%"
+              height="400"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </motion.div>
+
+        {/* Legal Info — collapsible */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="border border-gray-200 rounded-2xl overflow-hidden"
+        >
+          <button
+            onClick={() => setLegalOpen(!legalOpen)}
+            className="w-full flex items-center justify-between px-6 py-4 bg-gray-50 hover:bg-gray-100 transition-colors"
+          >
+            <span className="font-semibold text-[#0B1F33] text-sm uppercase tracking-widest">
+              {t.legal_title}
+            </span>
+            <motion.span
+              animate={{ rotate: legalOpen ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+              className="text-[#C9A84C] text-xl font-bold"
+            >
+              ↓
+            </motion.span>
+          </button>
+
+          <motion.div
+            initial={false}
+            animate={{ height: legalOpen ? "auto" : 0, opacity: legalOpen ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden"
+          >
+            <div className="px-6 py-6 grid sm:grid-cols-2 gap-3">
+              {Object.values(t.legal).map((item, i) => (
+                <div key={i} className="flex items-start gap-2">
+                  <span className="text-[#C9A84C] mt-1">—</span>
+                  <p className="text-gray-600 text-sm">{item}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </motion.div>
+
+      </div>
+    </div>
+  );
+}
