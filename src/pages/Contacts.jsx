@@ -12,7 +12,7 @@ const content = {
     label: "Get In Touch",
     title: "Contacts",
     address_label: "Address",
-    address: "Davtashen district, 2nd lane, building 34, apt. 28, Yerevan, Armenia",
+    address: "Davtashen district, Yerevan, Armenia",
     phone_label: "Phone",
     phone: "+374 91 726217",
     email_label: "Email",
@@ -33,7 +33,7 @@ const content = {
       company: "«Combo Group» LLC",
       reg: "Registration number: 271.110.1480205",
       tax: "Tax number: 08307238",
-      address: "Address: Davtashen district, 2nd lane, building 34, apt. 28, Yerevan, Armenia",
+      address: "Address: Davtashen district, Yerevan, Armenia",
       director: "Director: Hovhannes Hovhannisyan Yuriki",
       bank: "Bank: «ACBA BANK» JSC",
       branch: "Branch: «Avan»",
@@ -44,7 +44,7 @@ const content = {
     label: "Свяжитесь с нами",
     title: "Контакты",
     address_label: "Адрес",
-    address: "р-н Давташен, 2-й переулок, дом 34, кв. 28, Ереван, Армения",
+    address: "р-н Давташен, Ереван, Армения",
     phone_label: "Телефон",
     phone: "+374 91 726217",
     email_label: "Email",
@@ -65,7 +65,7 @@ const content = {
       company: "ООО «Комбо Груп»",
       reg: "Регистрационный номер: 271.110.1480205",
       tax: "Налоговый номер: 08307238",
-      address: "Адрес: р-н Давташен, 2-й переулок, дом 34, кв. 28, Ереван, Армения",
+      address: "Адрес: р-н Давташен, Ереван, Армения",
       director: "Директор: Hovhannes Hovhannisyan Yuriki",
       bank: "Банк: ЗАО «АКБА БАНК»",
       branch: "Филиал: «Аван»",
@@ -76,7 +76,7 @@ const content = {
     label: "Կապ հաստատեք",
     title: "Կոնտակտներ",
     address_label: "Հասցե",
-    address: "Դավթաշեն, 2-րդ նրբ., շ. 34, բն. 28, Երևան, Հայաստան",
+    address: "Դավթաշեն, Երևան, Հայաստան",
     phone_label: "Հեռախոս",
     phone: "+374 91 726217",
     email_label: "Էլ. փոստ",
@@ -97,7 +97,7 @@ const content = {
       company: "«Կոմբո Գրուփ» ՍՊԸ",
       reg: "Գրանցման համար: 271.110.1480205",
       tax: "Հարկ վճարողի համար (ՀՎՀՀ): 08307238",
-      address: "Հասցե: Դավթաշեն, 2-րդ նրբ., շ. 34, բն. 28, Երևան, Հայաստան",
+      address: "Հասցե: Դավթաշեն, Երևան, Հայաստան",
       director: "Գործադիր մարմնի դեկավար: Հովhаnnес Հovhаnnисян Юрики",
       bank: "Բանկ: «ԱԿԲԱ ԲԱՆԿ» ՓԲԸ",
       branch: "«Ավան» մասնաճյուղ",
@@ -110,7 +110,7 @@ export default function ContactsPage() {
   const { lang } = useLang();
   const t = content[lang];
   const [legalOpen, setLegalOpen] = useState(false);
-  const [status, setStatus] = useState("idle"); // idle | sending | success | error
+  const [status, setStatus] = useState("idle");
   const [form, setForm] = useState({
     name: "", company: "", phone: "", email: "", message: "",
   });
@@ -147,7 +147,6 @@ export default function ContactsPage() {
     <div className="pt-28 pb-24 bg-white min-h-screen">
       <div className="max-w-7xl mx-auto px-6">
 
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -161,7 +160,6 @@ export default function ContactsPage() {
 
         <div className="grid md:grid-cols-2 gap-12 mb-16">
 
-          {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -192,7 +190,6 @@ export default function ContactsPage() {
             </div>
           </motion.div>
 
-          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -241,7 +238,6 @@ export default function ContactsPage() {
                 className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#C9A84C] transition-colors resize-none"
               />
 
-              {/* Status message */}
               {status === "success" && (
                 <div className="bg-green-50 border border-green-200 text-green-700 rounded-xl px-4 py-3 text-sm font-medium">
                   {t.success}
@@ -268,7 +264,6 @@ export default function ContactsPage() {
           </motion.div>
         </div>
 
-        {/* Google Map */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -278,9 +273,9 @@ export default function ContactsPage() {
           <h2 className="text-2xl font-bold text-[#0B1F33] mb-6">{t.map_title}</h2>
           <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-md">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d23168.781528543965!2d44.44664557431642!3d40.212322500000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sDavtashen%202nd%20lane%2C%20building%2034%2C%20Yerevan%2C%20Armenia!5e1!3m2!1sru!2sam!4v1777834781987!5m2!1sru!2sam"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23164.535161590065!2d44.46202160904168!3d40.224741924116664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406a9819fc213331%3A0x592823c41827a8a6!2z0JTQsNCy0YLQsNGI0LXQvSwg0JXRgNC10LLQsNC9!5e1!3m2!1sru!2sam!4v1778024029632!5m2!1sru!2sam"
               width="100%"
-              height="400"
+              height="450"
               style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
@@ -289,7 +284,6 @@ export default function ContactsPage() {
           </div>
         </motion.div>
 
-        {/* Legal Info */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
