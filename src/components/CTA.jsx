@@ -8,7 +8,9 @@ export default function CTA() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const { lang } = useLang();
-  const t = translations[lang].cta;
+  
+  // Safety check: ensure the translation exists to avoid 'undefined' errors
+  const t = translations[lang]?.cta || {};
 
   return (
     <section id="contact" className="py-24 bg-white">
@@ -20,6 +22,7 @@ export default function CTA() {
           transition={{ duration: 0.7 }}
           className="bg-[#0B1F33] rounded-3xl px-10 py-16 md:py-20 text-center relative overflow-hidden"
         >
+          {/* Animated Background Decorations */}
           <motion.div
             className="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-[#C9A84C]/10"
             animate={{ scale: [1, 1.15, 1] }}
@@ -32,9 +35,15 @@ export default function CTA() {
           />
 
           <div className="relative z-10">
-            <p className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest mb-4">{t.label}</p>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 max-w-2xl mx-auto leading-tight">{t.title}</h2>
-            <p className="text-white/60 mb-10 max-w-lg mx-auto">{t.subtitle}</p>
+            <p className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest mb-4">
+              {t.label}
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 max-w-2xl mx-auto leading-tight">
+              {t.title}
+            </h2>
+            <p className="text-white/60 mb-10 max-w-lg mx-auto">
+              {t.subtitle}
+            </p>
 
             <motion.div
               className="flex flex-col sm:flex-row gap-4 justify-center"
@@ -42,18 +51,16 @@ export default function CTA() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              {/* Contact Us → goes to Contacts page */}
               <Link
-                to="/Contacts.jsx"
-                className="bg-[#C9A84C] text-[#0B1F33] font-bold px-10 py-4 rounded-full text-base hover:brightness-110 transition-all"
+                to="/contacts"
+                className="inline-block bg-[#C9A84C] text-[#0B1F33] font-bold px-10 py-4 rounded-full text-base hover:brightness-110 transition-all text-center"
               >
                 {t.btn_contact}
               </Link>
 
-              
-              
+              <a
                 href="tel:+37491726217"
-                className="border-2 border-white/30 text-white font-semibold px-10 py-4 rounded-full text-base hover:border-[#C9A84C] hover:text-[#C9A84C] transition-all"
+                className="border-2 border-white/30 text-white font-semibold px-10 py-4 rounded-full text-base hover:border-[#C9A84C] hover:text-[#C9A84C] transition-all text-center"
               >
                 {t.btn_call}
               </a>
