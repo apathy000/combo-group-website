@@ -45,9 +45,7 @@ export default function Services() {
                   ))}
                 </ul>
               </div>
-              <button className="mt-8 text-sm font-semibold underline underline-offset-4 opacity-70 hover:opacity-100 text-left transition-opacity">
-                {t.learn_more}
-              </button>
+              
             </motion.div>
           ))}
         </div>
