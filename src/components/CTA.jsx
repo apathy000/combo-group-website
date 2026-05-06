@@ -44,7 +44,7 @@ export default function CTA() {
             >
               {/* Contact Us → goes to Contacts page */}
               <Link
-                to="/contacts"
+                to="/Contacts.jsx"
                 className="bg-[#C9A84C] text-[#0B1F33] font-bold px-10 py-4 rounded-full text-base hover:brightness-110 transition-all"
               >
                 {t.btn_contact}
