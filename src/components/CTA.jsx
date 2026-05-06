@@ -41,7 +41,7 @@ export default function CTA() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <a href="mailto:info@combogroup.am" className="bg-[#C9A84C] text-[#0B1F33] font-bold px-10 py-4 rounded-full text-base hover:brightness-110 transition-all">
+              <a href="Combogroupimport@gmail.com" className="bg-[#C9A84C] text-[#0B1F33] font-bold px-10 py-4 rounded-full text-base hover:brightness-110 transition-all">
                 {t.btn_contact}
               </a>
               <a href="tel:+374 91 726217" className="border-2 border-white/30 text-white font-semibold px-10 py-4 rounded-full text-base hover:border-[#C9A84C] hover:text-[#C9A84C] transition-all">
