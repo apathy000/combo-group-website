@@ -13,7 +13,7 @@ export default function AboutPage() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className = "mb-16"
         >
           <p className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest mb-3">
             {t.about.label}

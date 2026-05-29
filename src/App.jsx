@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LangProvider } from "./context/LangContext";
 import Header from "./components/Header";
+import Footer from "./components/Footer";   // ← ADD THIS
 import Home from "./pages/Home";
 import AboutPage from "./pages/About";
 import DistributionPage from "./pages/Distribution";
@@ -23,6 +24,7 @@ export default function App() {
             <Route path="/contacts" element={<ContactsPage />} />
           </Routes>
         </main>
+        <Footer />   {/* ← ADD THIS */}
       </BrowserRouter>
     </LangProvider>
   );
